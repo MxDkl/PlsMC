@@ -36,7 +36,7 @@ A zip file containing the datapack
     "message": "I want to kill them."
 }
 ```
-[Response](https://platform.openai.com/docs/api-reference/moderations): 
+### [Response](https://platform.openai.com/docs/api-reference/moderations): 
 ```json
 {
     "categories": {

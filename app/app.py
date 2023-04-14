@@ -35,7 +35,7 @@ def datapack():
     dp.create()
     path = dp.saveToFile()
     filename = path.split('/')[-1]
-    return send_file(path, as_attachment=True, attachment_filename=filename)
+    return send_file(path, as_attachment=True)
 
 
 # Moderates minecraft chat message

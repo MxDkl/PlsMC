@@ -4,6 +4,7 @@ from datapack import Datapack
 from command import Command
 from moderation import Moderation
 from translation import Translation
+from worldedit import WorldEdit
 
 
 # Flask api routes
@@ -62,3 +63,15 @@ def translate():
     
     t = Translation(message, (to_lang, from_lang))
     return jsonify({"translation": t.getTranslation()})
+
+
+# WorldEdit Command Generator
+@app.route('/api/plsmc/worldedit', methods=['GET','POST'])
+def worldedit():
+    try:
+        prompt = request.get_json()['prompt']
+    except:
+        return jsonify({"error": "No prompt field provided."})
+    
+    we = WorldEdit(prompt)
+    return jsonify({"command": we.create()})

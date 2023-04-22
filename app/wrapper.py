@@ -1,9 +1,15 @@
 import os
 from dotenv import load_dotenv
 import openai
+import pinecone
 
 load_dotenv()
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+pinecone.init(
+    api_key = os.getenv('PINECONE_API_KEY'),
+    environment = "eu-west4-gcp"
+)
+index = pinecone.Index("commands")
 
 
 class openaiWrapper:
@@ -56,6 +62,12 @@ class openaiWrapper:
         )
         output = response["results"][0]
         return output
+    
+    # pinecone search
+    def search(self, query : str, namespace : str, top_k : int = 1):
+        res = openai.Embedding.create(input=query, engine="text-embedding-ada-002")
+        res = index.query(vector=res["data"][0]["embedding"], top_k=2, namespace='WorldEdit', include_metadata=True)
+        return res
     
     
 

@@ -20,8 +20,7 @@ class WorldEdit(wrapper.openaiWrapper):
         shape: the shape of the region; can be cuboid, cyl, sphere
         radius: the radius of the region; a number
         density: the density of the region; a number lower=more dense
-        type: changes depending the command; can be block; biome; tree
-        pattern: the pattern of the region; can be block, biome, tree
+        type/pattern: changes depending the command; can be block type, biome type, tree type
         Here is the documentation:
         """
 

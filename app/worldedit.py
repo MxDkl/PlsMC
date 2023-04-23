@@ -12,11 +12,18 @@ class WorldEdit(wrapper.openaiWrapper):
         Start all your commands with a '/'.
         """
         self.system_context = """
-        Here is the documentation for some commands you may need to use:
+        I will provide documentation for some commands you may need to use.
+        Manditory command arguments are surrounded by <>, and optional arguments are surrounded by [].
+        Some keywords and their meanings:
+        shape: the shape of the region; can be cuboid, cyl, sphere
+        radius: the radius of the region; a number
+        density: the density of the region; a number lower=more dense
+        type: changes depending the command; can be block; biome; tree
+        Here is the documentation:
         """
 
     def create(self):
-        res = self.search(self.prompt, "WorldEdit", 2)
+        res = self.search(self.prompt, "WorldEdit", 3)
         for i in res["matches"]:
             self.system_context += f"""
             Command: {i['metadata']['command']}

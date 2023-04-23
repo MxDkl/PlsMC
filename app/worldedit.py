@@ -14,6 +14,7 @@ class WorldEdit(wrapper.openaiWrapper):
         self.system_context = """
         I will provide documentation for some commands you may need to use.
         Manditory command arguments are surrounded by <>, and optional arguments are surrounded by [].
+        Assume the user does not want a brush unless specified.
         Some keywords and their meanings:
         shape: the shape of the region; can be cuboid, cyl, sphere
         radius: the radius of the region; a number

@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 
 # Generates a minecraft command
-@app.route('/api/plsmc/command', methods=['GET','POST'])
+@app.route('/api/plsmc/command/minecraft', methods=['GET','POST'])
 def command():
     try:
         prompt = request.get_json()['prompt']
@@ -40,7 +40,7 @@ def datapack():
 
 
 # Moderates minecraft chat message
-@app.route('/api/plsmc/moderation', methods=['GET','POST'])
+@app.route('/api/plsmc/chat/moderation', methods=['GET','POST'])
 def moderation():
     try:
         message = request.get_json()['message']
@@ -52,7 +52,7 @@ def moderation():
 
 
 # Translates minecraft chat message
-@app.route('/api/plsmc/translation', methods=['GET','POST'])
+@app.route('/api/plsmc/chat/translation', methods=['GET','POST'])
 def translate():
     try:
         message = request.get_json()['message']
@@ -66,7 +66,7 @@ def translate():
 
 
 # WorldEdit Command Generator
-@app.route('/api/plsmc/worldedit', methods=['GET','POST'])
+@app.route('/api/plsmc/command/worldedit', methods=['GET','POST'])
 def worldedit():
     try:
         prompt = request.get_json()['prompt']

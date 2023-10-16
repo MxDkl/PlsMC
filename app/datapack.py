@@ -26,6 +26,7 @@ class Datapack(wrapper.openaiWrapper):
         Do not explain any of what you are doing, please. 
         Do not preface your response at all.
         """
+        self.chat_model = "gpt-4"
     
     def create(self):   
         response = self.complete(self.user_message)
